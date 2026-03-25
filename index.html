@@ -1623,6 +1623,51 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* =========================================
+           13. FLOATING WHATSAPP BUTTON
+           ========================================= */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 9990;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+            animation: none;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 768px) {
+            .floating-whatsapp {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1825,8 +1870,8 @@
                     <h2>Featured Properties Handpicked for You</h2>
                     <p>Explore the most sought-after properties in top locations.</p>
                 </div>
-                <!-- Prominent View All Card/Button With link to new page -->
-                <a href="#" class="view-all-card-btn" onclick="event.preventDefault(); openPromoPage('Featured Properties')">View All Properties <i class="fas fa-arrow-right"></i></a>
+                <!-- Modified to show only Uploaded Properties dynamically when clicked -->
+                <a href="#" class="view-all-card-btn" onclick="event.preventDefault(); openAllAonePropertiesPage()">View All Properties <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <!-- Horizontal scroll wrapper (16:9 ratio images) -->
@@ -2278,6 +2323,11 @@
             <p>&copy; 2023 A ONE property - Premium Real Estate Clone. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="floating-whatsapp" onclick="showEnquiryPopup()">
+        <i class="fab fa-whatsapp"></i>
+    </div>
 
     <!-- =========================================
          JAVASCRIPT FOR INTERACTIVITY
